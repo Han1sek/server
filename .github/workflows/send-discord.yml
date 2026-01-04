@@ -1,0 +1,17 @@
+name: Poslat zprávu na Discord
+
+on:
+  workflow_dispatch:
+
+jobs:
+  send:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Odeslat zprávu
+        run: |
+          curl -X POST \
+          -H "Content-Type: application/json" \
+          -d '{
+            "content": "**Holden**\nChci dostávat oznámení když Filip začne streamovat?"
+          }' \
+          ${{ secrets.DISCORD_WEBHOOK }}
